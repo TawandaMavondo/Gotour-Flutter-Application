@@ -177,17 +177,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 20,
                         ),
                         Container(
-                          decoration: BoxDecoration(
-                            boxShadow: <BoxShadow>[
-                              // Implement a Box Shadow for the buttons
-                              // BoxShadow(
-                              //   color: Colors.grey,
-                              //   blurRadius: 10,
-                              //   offset: Offset.,
-                              //   spreadRadius: 11.9
-                              // )
-                            ],
-                          ),
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ButtonStyle(

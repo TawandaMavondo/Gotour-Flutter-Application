@@ -33,6 +33,7 @@ class _GoTourAppState extends State<GoTourApp> {
           return MaterialApp(
             title: 'Go Tour Travel App',
             theme: theme,
+            debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRouter.onGenerateRoute,
             // @FIX: Fix the sharedpref for the onboading screen
             home: AuthWidget(
