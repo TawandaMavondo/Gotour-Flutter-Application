@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:gotour/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 class AuthWidgetBuilder extends StatefulWidget {
@@ -16,7 +17,7 @@ class _AuthWidgetBuilderState extends State<AuthWidgetBuilder> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
+        stream: context.watch<AuthenticationService>().userStream,
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
           final _user = snapshot.data;
           if (_user != null) {

@@ -1,0 +1,1 @@
+# Create Own Authentication stream to listen to when the user is logged in rather than listerning to the firebase onAuthStateChange() stream 

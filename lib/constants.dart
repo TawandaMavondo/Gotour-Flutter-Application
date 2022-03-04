@@ -62,6 +62,28 @@ class PrevButton extends StatelessWidget {
   }
 }
 
+void showLoadingDialog(BuildContext context, String message) {
+  showDialog(
+    useSafeArea: true,
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        scrollable: false,
+        content: Row(
+          children: [
+            CircularProgressIndicator(),
+            SizedBox(
+              width: 20,
+            ),
+            Text(message)
+          ],
+        ),
+      );
+    },
+  );
+}
+
 Widget buildAuthHeader(
     {required BuildContext context, required String headingText}) {
   return Column(
@@ -87,6 +109,13 @@ Widget buildAuthHeader(
     ],
   );
 }
+
+var formInputDecoration = InputDecoration(
+  border: OutlineInputBorder(
+    borderSide: BorderSide(color: Color(0xFFEEEEEE), width: 1.5),
+    borderRadius: BorderRadius.all(Radius.circular(13.0)),
+  ),
+);
 
 Widget PageContainer({required Widget child}) {
   return Container(
