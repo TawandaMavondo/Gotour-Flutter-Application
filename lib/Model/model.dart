@@ -1,0 +1,3 @@
+class Model {
+  String? id;
+}

@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "589251144486",
+    "project_id": "gotour-5f613",
+    "storage_bucket": "gotour-5f613.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589251144486:android:4b8b3c5c14a7887287efe7",
+        "android_client_info": {
+          "package_name": "df.com.zw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589251144486-24ihgvqc5mgovcmegit02ij3dd1rf65a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA28AWvKdX-yNQ9Csl2VivYEXb5YYxK52s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589251144486-24ihgvqc5mgovcmegit02ij3dd1rf65a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589251144486-bth4oid0ejmp8j4575vespjs3jkh167i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gotour"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589251144486:android:0e2bc1959f5be42087efe7",
+        "android_client_info": {
+          "package_name": "zw.co.tawandamavondo.gotour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589251144486-33ripkglmdp55ctfde6l3tkh9tafh34g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "zw.co.tawandamavondo.gotour",
+            "certificate_hash": "244c3fcff7e7eb1b5699d9f67b6972310d9902ab"
+          }
+        },
+        {
+          "client_id": "589251144486-24ihgvqc5mgovcmegit02ij3dd1rf65a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA28AWvKdX-yNQ9Csl2VivYEXb5YYxK52s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589251144486-24ihgvqc5mgovcmegit02ij3dd1rf65a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589251144486-bth4oid0ejmp8j4575vespjs3jkh167i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gotour"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
