@@ -87,3 +87,14 @@ Widget buildAuthHeader(
     ],
   );
 }
+
+Widget PageContainer({required Widget child}) {
+  return Container(
+    child: child,
+    width: double.infinity,
+    padding: EdgeInsets.symmetric(
+      horizontal: 16.0,
+      vertical: 10.0,
+    ),
+  );
+}

@@ -48,12 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       restorationId: LoginScreen.id,
       body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 10.0,
-          ),
+        child: PageContainer(
           child: Center(
             child: SingleChildScrollView(
               child: Column(
