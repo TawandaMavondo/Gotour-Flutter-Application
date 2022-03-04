@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:gotour/Auth/login_screen_view_model.dart';
 import 'package:gotour/Auth/signup_screen.dart';
 import 'package:gotour/providers/auth_provider.dart';
 import 'package:gotour/utils/validators.dart';
@@ -19,7 +18,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _key = GlobalKey<FormState>();
   bool _obscureText = true;
-  final _viewModel = new LoginScreenViewModel();
+  TextEditingController _emailController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
 
   void showLoadingDialog(BuildContext context) {
     showDialog(
@@ -69,10 +69,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             _key.currentState?.validate();
                           },
                           keyboardType: TextInputType.emailAddress,
-                          controller: _viewModel.emailConroller,
+                          controller: _emailController,
                           validator: emailValidator,
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0xFFEEEEEE), width: 1.5),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(13.0)),
+                            ),
                             labelText: "Email",
                           ),
                         ),
@@ -81,11 +86,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         TextFormField(
                           obscureText: this._obscureText,
-                          controller: _viewModel.passwordController,
+                          controller: _passwordController,
                           keyboardType: TextInputType.visiblePassword,
                           validator: passwordValidator,
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0xFFEEEEEE), width: 1.5),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(13.0)),
+                            ),
                             labelText: "Password",
                             suffixIcon: IconButton(
                               onPressed: () {
@@ -114,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(2.0),
+                            borderRadius: BorderRadius.circular(3.0),
                           ),
                           child: ElevatedButton(
                             onPressed: () async {
@@ -124,8 +134,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   await Provider.of<AuthenticationService>(
                                           context,
                                           listen: false)
-                                      .signIn(_viewModel.emailConroller.text,
-                                          _viewModel.passwordController.text);
+                                      .signIn(_emailController.text,
+                                          _passwordController.text);
                                 } on FirebaseAuthException catch (e) {
                                   Navigator.of(context).pop();
                                   Fluttertoast.showToast(
@@ -146,6 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             style: ButtonStyle(
+                              elevation: MaterialStateProperty.all<double>(2),
                               padding: MaterialStateProperty.all(
                                 EdgeInsets.symmetric(vertical: 14),
                               ),
@@ -170,10 +181,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             boxShadow: <BoxShadow>[
                               // Implement a Box Shadow for the buttons
                               // BoxShadow(
-                              //   // color: Colors.grey,
-                              //   // blurRadius: 1,
-                              //   // offset: Offset.zero,
-                              //   // spreadRadius: 0.1
+                              //   color: Colors.grey,
+                              //   blurRadius: 10,
+                              //   offset: Offset.,
+                              //   spreadRadius: 11.9
                               // )
                             ],
                           ),
@@ -183,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 Colors.white,
                               ),
-                              elevation: MaterialStateProperty.all<double>(1),
+                              elevation: MaterialStateProperty.all<double>(2),
                               padding: MaterialStateProperty.all(
                                 EdgeInsets.symmetric(vertical: 14),
                               ),

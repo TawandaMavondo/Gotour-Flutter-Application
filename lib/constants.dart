@@ -9,12 +9,28 @@ var textStyle = TextStyle(
   fontFeatures: openSans.fontFeatures,
 );
 var textTheme = GoogleFonts.openSansTextTheme();
+
+Map<int, Color> color = {
+  50: Color.fromRGBO(255, 125, 13, .1),
+  100: Color.fromRGBO(255, 125, 13, .2),
+  200: Color.fromRGBO(255, 125, 13, .3),
+  300: Color.fromRGBO(255, 125, 13, .4),
+  400: Color.fromRGBO(255, 125, 13, .5),
+  500: Color.fromRGBO(255, 125, 13, .6),
+  600: Color.fromRGBO(255, 125, 13, .7),
+  700: Color.fromRGBO(255, 125, 13, .8),
+  800: Color.fromRGBO(255, 125, 13, .9),
+  900: Color.fromRGBO(255, 125, 13, 1),
+};
+
+MaterialColor colorCustom = MaterialColor(0xffFF7D0D, color);
+
 ThemeData theme = ThemeData(
   fontFamily: GoogleFonts.marcellus().fontFamily,
-  primaryColor: primaryColor,
-  primarySwatch: Colors.orange,
+  primaryColor: colorCustom,
+  primarySwatch: colorCustom,
   textTheme: textTheme,
-  accentColor: primaryColor,
+  accentColor: colorCustom,
 );
 
 class PrevButton extends StatelessWidget {

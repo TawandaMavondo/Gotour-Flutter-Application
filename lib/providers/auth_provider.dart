@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gotour/Model/create_user.dart';
+import 'package:gotour/utils/check.dart';
 
 enum AuthStatus {
   Uninitialized,
@@ -32,6 +33,9 @@ class AuthenticationService extends ChangeNotifier {
   Stream<User> get onAuthStateChanged => _onAuthStateChangesController.stream;
 
   Future<UserCredential> signIn(String email, String password) async {
+    checkNotNull<String>(email, "Email should not be null");
+    checkNotNull<String>(password, "Password should not be null");
+    
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
