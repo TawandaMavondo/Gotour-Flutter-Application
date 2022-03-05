@@ -2,6 +2,7 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gotour/constants.dart';
+import 'package:gotour/widgets/location_card.dart';
 
 class MainScreen extends StatefulWidget {
   static const String id = '/main';
@@ -12,8 +13,10 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  bool isLiked = true;
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: _buildAppBar(),
       body: SafeArea(
@@ -29,13 +32,35 @@ class _MainScreenState extends State<MainScreen> {
                 "Get Ready For \nThe Travel Trip!",
                 style: TextStyle(
                   fontSize: 27,
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(
+                height: 35,
+              ),
+              _buildLocationSearch(context),
+              SizedBox(
                 height: 30,
               ),
-              _buildLocationSearch(context)
+              Text(
+                "My Location",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              LocationCard(
+                width: width,
+                imagePath: 'assets/boat_small.png',
+                isLiked: isLiked,
+                location: 'Lisbon',
+                title: 'Winter in Portugal',
+                description:
+                    "Portugal there's so much more to discover. Read about the Azores' new wave of eco-travel.",
+              )
             ],
           ),
         )),
