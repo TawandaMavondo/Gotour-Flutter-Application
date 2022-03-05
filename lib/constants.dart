@@ -118,7 +118,7 @@ Widget buildAuthHeader(
 var formInputDecoration = InputDecoration(
   border: OutlineInputBorder(
     borderSide: BorderSide(color: Color(0xFFEEEEEE), width: 1.5),
-    borderRadius: BorderRadius.all(Radius.circular(13.0)),
+    borderRadius: BorderRadius.all(Radius.circular(12.0)),
   ),
 );
 
