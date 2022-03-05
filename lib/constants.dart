@@ -31,7 +31,7 @@ ThemeData theme = ThemeData(
   primarySwatch: colorCustom,
   textTheme: textTheme,
   scaffoldBackgroundColor: Colors.white,
-  
+  appBarTheme: AppBarTheme(backgroundColor: Colors.white, elevation: 0),
   inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)))),

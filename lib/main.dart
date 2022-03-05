@@ -11,6 +11,7 @@ Future<void> main() async {
 
   if (viewed == null || viewed == false) {
     await prefs.setBool("onBoard", true);
+    viewed = false;
   }
   runApp(GoTourApp(
     isOnboardViewed: viewed,

@@ -55,7 +55,7 @@ class AuthenticationService extends ChangeNotifier {
       var lastname = model.lastname;
       await userCredential.user!.updateDisplayName("$firstname $lastname");
       this._user = userCredential.user;
-     // notifyListeners();
+      notifyListeners();
       return userCredential;
     } on FirebaseAuthException catch (_) {
       notifyListeners();

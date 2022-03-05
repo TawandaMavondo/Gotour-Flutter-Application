@@ -14,6 +14,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: Container(),
       ),
@@ -23,22 +24,24 @@ class _MainScreenState extends State<MainScreen> {
 
   FloatingNavbar _buildFloatingNavBar(BuildContext context) {
     return FloatingNavbar(
-        backgroundColor: greyColor,
-        unselectedItemColor: Colors.grey,
-        selectedBackgroundColor: greyColor,
-        selectedItemColor: Theme.of(context).primaryColor,
-        currentIndex: 0,
-        onTap: (index) {},
-        items: [
-          FloatingNavbarItem(icon: Icons.tune),
-          FloatingNavbarItem(icon: Icons.notifications),
-          FloatingNavbarItem(
-            icon: Icons.sms,
-          ),
-          FloatingNavbarItem(icon: Icons.place),
-          FloatingNavbarItem(
-            icon: Icons.person,
-          ),
-        ]);
+      backgroundColor: greyColor,
+      unselectedItemColor: Colors.grey,
+      selectedBackgroundColor: greyColor,
+      selectedItemColor: Theme.of(context).primaryColor,
+      currentIndex: 0,
+      onTap: (index) {},
+      borderRadius: 10,
+      items: [
+        FloatingNavbarItem(icon: Icons.explore),
+        FloatingNavbarItem(icon: Icons.notifications),
+        FloatingNavbarItem(
+          icon: Icons.sms,
+        ),
+        FloatingNavbarItem(icon: Icons.place),
+        FloatingNavbarItem(
+          icon: Icons.person,
+        ),
+      ],
+    );
   }
 }
