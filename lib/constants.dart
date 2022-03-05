@@ -30,6 +30,10 @@ ThemeData theme = ThemeData(
   primaryColor: colorCustom,
   primarySwatch: colorCustom,
   textTheme: textTheme,
+  
+  inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)))),
   accentColor: colorCustom,
 );
 

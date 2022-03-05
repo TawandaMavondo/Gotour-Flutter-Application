@@ -25,6 +25,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _phoneController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   late Gender _gender;
+
+  var agree = false;
   @override
   void initState() {
     this._gender = Gender.None;
@@ -37,7 +39,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _lastnameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-  //  _passwordController.dispose();
     super.dispose();
   }
 
@@ -88,14 +89,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: 15,
                           ),
                           TextFormField(
-                              controller: _emailController,
-                              validator: emailValidator,
-                              onEditingComplete: () {
-                                _key.currentState?.validate();
-                              },
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: formInputDecoration.copyWith(
-                                  labelText: "Email Address")),
+                            controller: _emailController,
+                            validator: emailValidator,
+                            onEditingComplete: () {
+                              _key.currentState?.validate();
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: formInputDecoration.copyWith(
+                                labelText: "Email Address"),
+                          ),
                           SizedBox(
                             height: 15,
                           ),
@@ -133,14 +135,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           SizedBox(
                             height: 15,
                           ),
+                          Row(
+                            children: [
+                              Material(
+                                child: Checkbox(
+                                  value: agree,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      agree = value ?? false;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text(
+                                'I agree and accept',
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  "terms of use.",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
                           Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(3.0),
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: ElevatedButton(
                               onPressed: () async {
-                                if (_key.currentState!.validate()) {
+                                if (_key.currentState!.validate() &&
+                                    (_gender != Gender.None) && agree) {
                                   showLoadingDialog(context, "Signing Up");
                                   var firstname = _firstnameController.text;
                                   var lastname = _lastnameController.text;
@@ -149,15 +185,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   var password = _passwordController.text;
                                   checkNotNull(firstname);
                                   checkNotNull(lastname);
+                                  checkNotNull(_gender);
 
                                   CreateUserModel newUsermodel =
-                                      new CreateUserModel(
-                                    firstname,
-                                    lastname,
-                                    email,
-                                    password,
-                                    phone,
-                                  );
+                                      new CreateUserModel(firstname, lastname,
+                                          email, password, phone,
+                                          gender: _gender);
 
                                   try {
                                     await Provider.of<AuthenticationService>(
@@ -219,7 +252,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 width: 1.5,
               ),
             ),
-            width: width * 0.75,
             child: CheckboxListTile(
               title: Text("Male"),
               value: _gender == Gender.Male,
@@ -232,7 +264,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
         SizedBox(
-          width: width * 0.065,
+          width: width * 0.055,
         ),
         Expanded(
           child: Container(
@@ -245,7 +277,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 width: 1.5,
               ),
             ),
-            width: width * 0.75,
             child: CheckboxListTile(
               title: Text("Female"),
               value: _gender == Gender.Female,

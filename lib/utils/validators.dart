@@ -2,7 +2,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 
 String? emailValidator(String? value) {
   if (value!.isEmpty) {
-    return "Email address should mot be empty";
+    return "Email address should not be empty";
   } else {
     return EmailValidator(errorText: "Please enter a valid email address")
         .call(value);
