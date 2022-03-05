@@ -24,12 +24,13 @@ Map<int, Color> color = {
 };
 
 MaterialColor colorCustom = MaterialColor(0xffFF7D0D, color);
-
+const greyColor = Color(0xF8FF8F8F8);
 ThemeData theme = ThemeData(
   fontFamily: GoogleFonts.marcellus().fontFamily,
   primaryColor: colorCustom,
   primarySwatch: colorCustom,
   textTheme: textTheme,
+  scaffoldBackgroundColor: Colors.white,
   
   inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
