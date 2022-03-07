@@ -1,6 +1,7 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gotour/Model/place.dart';
 import 'package:gotour/constants.dart';
 import 'package:gotour/widgets/location_card.dart';
 
@@ -14,6 +15,21 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   bool isLiked = true;
+  List<Place> places = [
+    Place(
+      title: "Sesimbra e Arrabida",
+      country: "Lisbon",
+      city: "Sesimbra",
+      imagePath: "assets/boat_large.png",
+    ),
+    Place(
+      title: "Harare City",
+      country: "Zimbabwe",
+      city: "Harare",
+      imagePath: "assets/church.png",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -104,23 +120,23 @@ class _MainScreenState extends State<MainScreen> {
         itemCount: 2,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, i) {
-          return _buildPlaceCard(i);
+          return _buildPlaceCard(places[i]);
         },
       ),
     );
   }
 
-  _buildPlaceCard(int i) {
+  _buildPlaceCard(Place place) {
     const textStyle = TextStyle(
       color: Colors.white,
     );
     return InkWell(
-      onTap: (){},
+      onTap: () {},
       child: Container(
         padding: EdgeInsets.all(12.0),
         child: Stack(
           children: [
-            Image.asset('assets/boat_large.png'),
+            Image.asset(place.imagePath),
             Positioned(
               bottom: 10,
               child: Container(
@@ -129,9 +145,10 @@ class _MainScreenState extends State<MainScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Sesimbra e Arrabida',
+                          place.title,
                           style: textStyle,
                         ),
                         SizedBox(
@@ -146,7 +163,7 @@ class _MainScreenState extends State<MainScreen> {
                               ),
                             ),
                             TextSpan(
-                              text: 'Sesimbra, Lisbon',
+                              text: '${place.city}, ${place.country}',
                               style: textStyle,
                             )
                           ]),
