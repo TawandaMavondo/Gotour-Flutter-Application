@@ -114,67 +114,70 @@ class _MainScreenState extends State<MainScreen> {
     const textStyle = TextStyle(
       color: Colors.white,
     );
-    return Container(
-      padding: EdgeInsets.all(12.0),
-      child: Stack(
-        children: [
-          Image.asset('assets/boat_large.png'),
-          Positioned(
-            bottom: 10,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        'Sesimbra e Arrabida',
+    return InkWell(
+      onTap: (){},
+      child: Container(
+        padding: EdgeInsets.all(12.0),
+        child: Stack(
+          children: [
+            Image.asset('assets/boat_large.png'),
+            Positioned(
+              bottom: 10,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          'Sesimbra e Arrabida',
+                          style: textStyle,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text.rich(
+                          TextSpan(children: [
+                            WidgetSpan(
+                              child: Icon(
+                                Icons.place,
+                                color: Colors.white,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Sesimbra, Lisbon',
+                              style: textStyle,
+                            )
+                          ]),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      width: 40,
+                    ),
+                    TextButton(
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        "\$3 000",
                         style: textStyle,
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text.rich(
-                        TextSpan(children: [
-                          WidgetSpan(
-                            child: Icon(
-                              Icons.place,
-                              color: Colors.white,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'Sesimbra, Lisbon',
-                            style: textStyle,
-                          )
-                        ]),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    width: 40,
-                  ),
-                  TextButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        Theme.of(context).primaryColor,
-                      ),
                     ),
-                    onPressed: () {},
-                    child: Text(
-                      "\$3 000",
-                      style: textStyle,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
