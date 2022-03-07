@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gotour/Auth/login_screen.dart';
 import 'package:gotour/Pages/main_page.dart';
+import 'package:gotour/Services/initialization_service.dart';
 import 'package:gotour/providers/auth_provider.dart';
 import 'package:gotour/widgets/auth_widget.dart';
 import 'package:gotour/widgets/auth_widget_builder.dart';
@@ -38,14 +39,31 @@ class _GoTourAppState extends State<GoTourApp> {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRouter.onGenerateRoute,
             // @FIX: Fix the sharedpref for the onboading screen
-            home: AuthWidget(
-              userSnapshot: snapshot,
-              onboardingBuilder: (context) => OnBoardingScreen(),
-              isViewed: this.widget.isOnboardViewd!,
-              signedInBuilder: (context) => MainScreen(),
-              nonSignedInBuilder: (context) => LoginScreen(),
+            home: FutureBuilder(
+              future: InitializationService.init(context),
+              builder:
+                  (BuildContext context, AsyncSnapshot<void> asyncSnapshot) {
+                if (asyncSnapshot.connectionState == ConnectionState.done ) {
+                  return _buildRootWidget(snapshot);
+                }
+                return Scaffold(
+                  body: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              },
             ),
           );
         }));
+  }
+
+  _buildRootWidget(AsyncSnapshot<User?> snapshot) {
+    return AuthWidget(
+      userSnapshot: snapshot,
+      onboardingBuilder: (context) => OnBoardingScreen(),
+      isViewed: this.widget.isOnboardViewd!,
+      signedInBuilder: (context) => MainScreen(),
+      nonSignedInBuilder: (context) => LoginScreen(),
+    );
   }
 }
