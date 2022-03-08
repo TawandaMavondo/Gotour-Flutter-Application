@@ -21,10 +21,11 @@ class InitializationService {
     for (String imagePath in _images) {
       _precacheImageFutures.add(precacheImage(AssetImage(imagePath), context));
     }
+    // _precacheImageFutures.add(Future.delayed(Duration(seconds: 45)));
     return Future.wait(_precacheImageFutures);
   }
 
   static init(BuildContext context) async {
-    _precacheImageAssets(context);
+    await _precacheImageAssets(context);
   }
 }
