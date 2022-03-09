@@ -73,7 +73,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           nextFlex: 0,
           onDone: () async {
             // Navigator to the login screen
-            
             Navigator.pushNamed(context, LoginScreen.id);
           },
           onSkip: () {
