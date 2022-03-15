@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gotour/constants.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'Auth/login_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -14,19 +12,7 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
-  Widget _buildFullscrenImage(String assetName) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 0),
-      child: Image.asset(
-        'assets/$assetName',
-        fit: BoxFit.cover,
-        height: double.infinity,
-        width: double.infinity,
-        alignment: Alignment.center,
-      ),
-    );
-  }
-
+ 
   Widget _buildImage(String assetName, [double width = 370]) {
     return Image.asset('assets/$assetName', width: width);
   }

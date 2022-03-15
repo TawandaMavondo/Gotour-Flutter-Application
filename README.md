@@ -1,4 +1,4 @@
-# gotour
+# GoTour Flutter Travel Application
 
 A new Flutter project.
 
