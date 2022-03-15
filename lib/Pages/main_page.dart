@@ -21,12 +21,14 @@ class _MainScreenState extends State<MainScreen> {
       country: "Lisbon",
       city: "Sesimbra",
       imagePath: "assets/boat_large.png",
+      price: 3000
     ),
     Place(
       title: "Harare City",
       country: "Zimbabwe",
       city: "Harare",
       imagePath: "assets/church.png",
+      price: 4000
     ),
   ];
 
@@ -185,7 +187,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       onPressed: () {},
                       child: Text(
-                        "\$3 000",
+                        "\$ ${place.price}",
                         style: textStyle,
                       ),
                     ),
