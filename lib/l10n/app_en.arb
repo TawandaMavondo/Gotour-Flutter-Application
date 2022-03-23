@@ -1,6 +1,9 @@
 {
-    "helloWorld": "Hello World!",
-    "@helloWorld": {
-      "description": "The conventional newborn programmer greeting"
-    }
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "homePageTitle": "Get Ready For \nThe Travel Trip!",
+  "myLocationTitle": "My Location",
+  "bestPlacesTitle": "Best Places"
 }

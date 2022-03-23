@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gotour/Model/place.dart';
 import 'package:gotour/constants.dart';
 import 'package:gotour/widgets/location_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainScreen extends StatefulWidget {
   static const String id = '/main';
@@ -17,19 +18,17 @@ class _MainScreenState extends State<MainScreen> {
   bool isLiked = true;
   List<Place> places = [
     Place(
-      title: "Sesimbra e Arrabida",
-      country: "Lisbon",
-      city: "Sesimbra",
-      imagePath: "assets/boat_large.png",
-      price: 3000
-    ),
+        title: "Sesimbra e Arrabida",
+        country: "Lisbon",
+        city: "Sesimbra",
+        imagePath: "assets/boat_large.png",
+        price: 3000),
     Place(
-      title: "Harare City",
-      country: "Zimbabwe",
-      city: "Harare",
-      imagePath: "assets/church.png",
-      price: 4000
-    ),
+        title: "Harare City",
+        country: "Zimbabwe",
+        city: "Harare",
+        imagePath: "assets/church.png",
+        price: 4000),
   ];
 
   @override
@@ -47,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
                 height: 30,
               ),
               Text(
-                "Get Ready For \nThe Travel Trip!",
+                AppLocalizations.of(context)!.homePageTitle,
                 style: TextStyle(
                   fontSize: 27,
                   fontWeight: FontWeight.bold,
@@ -61,7 +60,7 @@ class _MainScreenState extends State<MainScreen> {
                 height: 30,
               ),
               Text(
-                "My Location",
+                App,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,

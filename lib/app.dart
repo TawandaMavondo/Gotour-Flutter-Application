@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gotour/Auth/login_screen.dart';
 import 'package:gotour/Pages/main_page.dart';
 import 'package:gotour/Services/initialization_service.dart';
 import 'package:gotour/providers/auth_provider.dart';
 import 'package:gotour/widgets/auth_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:gotour/widgets/auth_widget_builder.dart';
 import 'package:provider/provider.dart';
 import 'Routing/app_router.dart';
@@ -38,12 +40,14 @@ class _GoTourAppState extends State<GoTourApp> {
             theme: theme,
             debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRouter.onGenerateRoute,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
             // @FIX: Fix the sharedpref for the onboading screen
             home: FutureBuilder(
               future: InitializationService.init(context),
               builder:
                   (BuildContext context, AsyncSnapshot<void> asyncSnapshot) {
-                if (asyncSnapshot.connectionState == ConnectionState.done ) {
+                if (asyncSnapshot.connectionState == ConnectionState.done) {
                   return _buildRootWidget(snapshot);
                 }
                 return Scaffold(
