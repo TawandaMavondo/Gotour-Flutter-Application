@@ -60,7 +60,7 @@ class _MainScreenState extends State<MainScreen> {
                 height: 30,
               ),
               Text(
-                App,
+                AppLocalizations.of(context)!.myLocationTitle,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
