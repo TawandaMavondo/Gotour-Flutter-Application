@@ -35,7 +35,8 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: _buildAppBar(context),
+      drawer: _buildDrawer(),
       body: SafeArea(
         child: PageContainer(
             child: SingleChildScrollView(
@@ -111,6 +112,37 @@ class _MainScreenState extends State<MainScreen> {
         )),
       ),
       bottomNavigationBar: _buildFloatingNavBar(context),
+    );
+  }
+
+  Drawer _buildDrawer() {
+    return Drawer(
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: EdgeInsets.zero,
+        children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Text('Drawer Header'),
+          ),
+          ListTile(
+            title: const Text('Item 1'),
+            onTap: () {
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: const Text('Item 2'),
+            onTap: () {
+              // Update the state of the app.
+              // ...
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -201,15 +233,24 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   _buildLocationSearch(BuildContext context) {
+    String _displayStringForOption(String option) => "";
+
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-              child: TextField(
-            decoration: formInputDecoration.copyWith(
-              label: Text('Find Your Location'),
-            ),
+              child: Autocomplete<String>(
+            displayStringForOption: _displayStringForOption,
+            optionsBuilder: (textEditingValue) {
+              return Iterable<String>.empty();
+            },
+            onSelected: (value) {
+              debugPrint(value);
+            },
+            // decoration: formInputDecoration.copyWith(
+            //   label: Text('Find Your Location'),
+            // ),
           )),
           SizedBox(
             width: 25,
@@ -237,11 +278,13 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  AppBar _buildAppBar() {
+  AppBar _buildAppBar(BuildContext context) {
     return AppBar(
       leading: Center(
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+           // Scaffold.of(context).openDrawer();
+          },
           child: SizedBox(
             width: 30,
             height: 30,

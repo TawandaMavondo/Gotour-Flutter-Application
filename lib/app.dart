@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gotour/Auth/login_screen.dart';
 import 'package:gotour/Pages/main_page.dart';
 import 'package:gotour/Services/initialization_service.dart';
